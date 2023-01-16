@@ -1,30 +1,23 @@
-import Image from "next/legacy/image";
 import { Tour } from "../../types/types";
+import Image from "next/image";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 
-
-type Props = {
-  data:[]
-  subtitle:boolean;
-  length:number
-};
-
-export function SearchSelect({ data, length, subtitle }:Props) {
-
-  for (let i = length - 2; i > 0; i--) {
+function arrayRandom( data : any) {
+  for (let i = 48; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
     data[i] = data[r];
     data[r] = tmp;
   }
+  return data;
+}
 
-  // console.log(data);
+export function Recommend({ data }:{data: any}) {
   return (
     <>
-    {subtitle?<div className={styles.headline}>検索結果</div>:<div className={styles.headline}>おすすめ</div>}
-      
-      {data.map((item: Tour) => {
+      <div className={styles.headline}>おすすめ</div>;
+      {arrayRandom(data).map((item: Tour) => {
         return (
           <div key={item.id} id="content" className={styles.eachcontent}>
             <div className={styles.result__flex}>
@@ -42,13 +35,13 @@ export function SearchSelect({ data, length, subtitle }:Props) {
                 </div>
 
                 <div className={styles.tour_tags}>
-                  {item.area && (
+                  {item.area.length > 0 && (
                     <div className={styles.tour_tag}>{item.area}</div>
                   )}
-                  {item.country && (
+                  {item.country.length > 0 && (
                     <div className={styles.tour_tag}>{item.country}</div>
                   )}
-                  {item.city && (
+                  {item.city.length > 0 && (
                     <div className={styles.tour_tag}>{item.city}</div>
                   )}
                 </div>
@@ -74,9 +67,7 @@ export function SearchSelect({ data, length, subtitle }:Props) {
                   </div>
 
                   <div id="button" className={styles.button_around}>
-                    {" "}
-                    {/* 詳細ボタン */}
-                    <Link href={`/tour/${item.id}`}>
+                    <Link href={`/${item.id}`}>
                       <button className={styles.button}>詳細はこちら </button>
                     </Link>
                   </div>

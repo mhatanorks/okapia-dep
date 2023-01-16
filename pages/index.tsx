@@ -1,80 +1,102 @@
-// スパベーステスト
+import Head from "next/head";
+import Image from "next/legacy/image";
+import styles from "../styles/toppage.module.css";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/css";
+import { useState, useMemo } from "react";
+import { SearchBox } from "../components/serchPage/SearchBox";
+import { SearchResult } from "../components/serchPage/SearchResult";
 
-/*
-supabase上でテーブルの設定が`No active RLS enabled`になっていると
-取得できないので、
-`RLS is not enabled`
-に切り替える！
-参考
-https://tech-blog.rakus.co.jp/entry/20220928/vercel#Supabase%E3%81%A8%E3%81%AF
-*/
+export default function Home() {
+  const [url, setUrl] = useState("/api/supabaseTours");
+  const[subtitle,setSubtitle]=useState(false);
 
-import { supabase } from "../utils/supabaseClient"; // supabaseをコンポーネントで使うときはかく
-import { useState, useEffect } from "react";
-import Error from "next/error";
+  const [isOpen, setIsOpen] = useState(true);
 
-const Form = () => {
-  // データ送信
-  const [name, setTitle] = useState("");
-  const [userId, setId] = useState("");
-  const tours = ["tours", 2];
-  const submit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    await supabase.from("testTable").insert({ name }); // 入れたい("テーブル名")と({カラム名})
-    await supabase.from("inCarts").insert({ tours, userId }); // 入れたい("テーブル名")と({カラム名})
+  setTimeout(() => {
+    setIsOpen(false);
+  }, 0.8 * 1000);
+  const [isDisplay, setIsDisplay] = useState(true);
+  setTimeout(() => {
+    setIsDisplay(false);
+  }, 2 * 1000);
+
+  const Slider = () => {
+    return (
+      <>
+        <Splide
+          aria-label="トップページ"
+          options={{
+            autoplay: true, // 自動再生を有効
+            interval: 3000, // 自動再生の間隔を3秒に設定
+          }}
+        >
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/scenery.jpg"
+                alt="風景の画像"
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/flower.jpg"
+                alt="花の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide>
+        </Splide>
+      </>
+    );
   };
-
-  // データ取得
-  // ページ読み込み時にsupabaseのデータ取得
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-  const mailAddress = "keisuke@honda.com";
-  const password = "keisuke04";
-  const [data, setData] = useState<any>([]); // データを配列で受け取る
-  const getData = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    let { data, error }: { data: any; error: any } = await supabase
-      .from("users")
-      .select() // テーブル名 "testTable" のデータを取得
-      .eq("mailAddress", mailAddress);
-    // .eq("password", password);
-    setData(data); // 取得したデータをステートで保持
-    const uni = data[0];
-    const userId = uni.id;
-    console.log(userId);
-  };
-  console.log(data);
-
+  const SearchResultMemo = useMemo(() => <SearchResult url={url} subtitle={subtitle}/>, [url]);
   return (
-    <>
-      {/* supabaseにデータを入力 */}
-      <form onSubmit={submit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          value={userId}
-          onChange={(e) => setId(e.target.value)}
-        />
-        <button>送信</button>
-      </form>
+    <div>
+      <Head>
+        <title>Okapia Tour</title>
+      </Head>
 
-      {/* 取得したデータを表示 */}
-      {data.map((d: { id: number; firstName: string; lastName: any }) => (
-        <ul key={d.id}>
-          <li>
-            {d.firstName} {d.lastName}
-          </li>
-        </ul>
-      ))}
-      <form onSubmit={getData}>
-        <button>取得</button>
-      </form>
-    </>
+      {/* トップページアニメーション */}
+      <div
+        className={styles.logos}
+        style={{
+          transition: "1s",
+          opacity: isOpen ? 1 : 0,
+          display: isDisplay ? "block" : "none",
+        }}
+      >
+        <div className={styles.logo}>
+          <Image
+            className={styles.fadeUp}
+            src="/images/logo_cover3.png"
+            alt="検索"
+            layout="fill"
+            priority
+          />
+        </div>
+      </div>
+
+      <Header />
+      <div className={styles.container}>
+        <Slider />
+      </div>
+      <div className={styles.search_box}>
+        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
+      </div>
+      {SearchResultMemo}
+    
+      <Footer />
+    </div>
   );
-};
-export default Form;
+}

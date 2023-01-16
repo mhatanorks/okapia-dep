@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import { CartdetailCount } from "../../component/CartList/cartdetailCount";
+import { CartdetailCount } from "./cartdetailCount";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";

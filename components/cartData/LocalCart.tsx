@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Tour } from "../../types/types";
-import { CartItems } from "../cartData/CartItems";
+import { CartItems } from "./CartItems";
 
 type Props = {
   amount: number;

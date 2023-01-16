@@ -1,13 +1,13 @@
 import Head from "next/head";
 import Image from "next/legacy/image";
 import styles from "../../styles/toppage.module.css";
-import { Header } from "../../component/header";
-import { Footer } from "../../component/footer";
+import { Header } from "../../components/header";
+import { Footer } from "../../components/footer";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import { useState, useMemo } from "react";
-import { SearchBox } from "../../component/serchPage/SearchBox";
-import { SearchResult } from "../../component/serchPage/SearchResult";
+import { SearchBox } from "../../components/serchPage/SearchBox";
+import { SearchResult } from "../../components/serchPage/SearchResult";
 
 export default function Home() {
   const [url, setUrl] = useState("/api/supabaseTours");

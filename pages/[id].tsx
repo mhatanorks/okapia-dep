@@ -1,18 +1,18 @@
 import Head from "next/head";
-import styles from "../../styles/tripdetail.module.css";
-import { TripdetailContent } from "../../component/tripdetailContent";
-import { TripdetailCount } from "../../component/tripdetailCount";
-import { TripdetailAttention } from "../../component/tripdetailAttention";
-import { TripdetailActivity } from "../../component/tripdetailActivity";
-import { TripdetailImage } from "../../component/tripdetailImage";
-import Layout from "../../component/layout";
-import { TripdetailTimes } from "../../component/tripdetailTimes";
+import styles from "../styles/tripdetail.module.css";
+import { TripdetailContent } from "../components/tripdetailContent";
+import { TripdetailCount } from "../components/tripdetailCount";
+import { TripdetailAttention } from "../components/tripdetailAttention";
+import { TripdetailActivity } from "../components/tripdetailActivity";
+import { TripdetailImage } from "../components/tripdetailImage";
+import Layout from "../components/layout";
+import { TripdetailTimes } from "../components/tripdetailTimes";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import useCookie from "../../hooks/useCookie";
-import { Tour, Comment } from "../../types/types";
-import { supabase } from "../../utils/supabaseClient";
-import { ReviewComment } from "../../component/reviewComment";
+import useCookie from "../hooks/useCookie";
+import { Tour, Comment } from "../types/types";
+import { supabase } from "../utils/supabaseClient";
+import { ReviewComment } from "../components/reviewComment";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("tours").select("*");

@@ -35,14 +35,14 @@ export function ReviewComment({
               );
             })}
           </div>
-          <Link href={`/tour/comment/${tour.id}`}>
+          <Link href={`/comment/${tour.id}`}>
             <button className={styles.user__comment_btn}>口コミをかく</button>
           </Link>
         </section>
       ) : (
         <>
           <p className={styles.user__comment_none}>口コミはまだありません</p>
-          <Link href={`/tour/comment/${tour.id}`}>
+          <Link href={`/comment/${tour.id}`}>
             <button className={styles.user__comment_btn}>口コミをかく</button>
           </Link>
         </>

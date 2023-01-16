@@ -1,12 +1,12 @@
-import styles from "../../styles/booking_confirmation.module.css";
+import styles from "../styles/booking_confirmation.module.css";
 import Head from "next/head";
-import Layout from "../../component/layout";
-import useCookie from "../../hooks/useCookie";
+import Layout from "../components/layout";
+import useCookie from "../hooks/useCookie";
 import { useEffect, useState } from "react";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import { Order } from "../../types/types";
-import { supabase } from "../../utils/supabaseClient";
+import { Order } from "../types/types";
+import { supabase } from "../utils/supabaseClient";
 
 export default function BookingConfirmation() {
   const cookie = useCookie();
@@ -51,7 +51,7 @@ export default function BookingConfirmation() {
           {data.length ? (
             <p className={styles.dpn}></p>
           ) : (
-            <Link href="/tour">
+            <Link href="/">
               <div className={styles.bookingC_btn}>
                 <button className={styles.bookingC_btn_search}>
                   ツアーを探す
@@ -81,7 +81,7 @@ export default function BookingConfirmation() {
                       </div>
 
                       <div className={styles.user_comment}>
-                        <Link href={`/tour/comment/${tour.id}`}>
+                        <Link href={`/comment/${tour.id}`}>
                           <button className={styles.user_comment_btn}>
                             クチコミ
                           </button>

@@ -1,14 +1,14 @@
-import styles from "../../styles/pay.module.css";
-import useCookie from "../../hooks/useCookie";
+import styles from "../styles/pay.module.css";
+import useCookie from "../hooks/useCookie";
 import { useEffect, useState } from "react";
-import Layout from "../../component/layout";
+import Layout from "../components/layout";
 import Head from "next/head";
 import Image from "next/image";
-import { Cart, Tour } from "../../types/types";
+import { Cart, Tour } from "../types/types";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { init, send } from "@emailjs/browser";
-import { supabase } from "../../utils/supabaseClient";
+import { supabase } from "../utils/supabaseClient";
 
 // メール送信時利用する環境変数定義
 const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;

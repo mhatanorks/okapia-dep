@@ -1,6 +1,6 @@
-import useCookie from "../../hooks/useCookie";
-import { BackCart } from "../../component/cartData/BackCart";
-import { LocalCart } from "../../component/cartData/LocalCart";
+import useCookie from "../hooks/useCookie";
+import { BackCart } from "../components/cartData/BackCart";
+import { LocalCart } from "../components/cartData/LocalCart";
 import { useState } from "react";
 
 export default function Cart() {

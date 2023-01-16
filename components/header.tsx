@@ -19,10 +19,10 @@ export function Header() {
     document.cookie = "userOkapiaTour=;path=/;max-age=0";
     const url = location.href;
     console.log(url);
-    if (url == `${process.env.NEXT_PUBLIC_BASE_URL}/tour`) {
+    if (url == `${process.env.NEXT_PUBLIC_BASE_URL}/`) {
       Router.reload();
     } else {
-      Router.push("/tour/");
+      Router.push("/");
     }
   }
 
@@ -31,7 +31,7 @@ export function Header() {
       <div className={styles.header}>
         <div className={styles.header_items}>
           <div className={styles.header_logo}>
-            <Link href="/tour" className={styles.icon_flex}>
+            <Link href="/" className={styles.icon_flex}>
               <div className={styles.header_logo_items}>
                 <div className={styles.icon}>
                   <Image src="/images/logo.png" alt="ロゴ" layout="fill" />
@@ -42,7 +42,7 @@ export function Header() {
           </div>
           <div className={styles.buttons}>
             <div className={styles.cart}>
-              <Link href="/tour/cart">
+              <Link href="/cart">
                 <div className={styles.cart_size}>
                   <Image
                     src="/images/shopping-cart.png"
@@ -57,7 +57,7 @@ export function Header() {
             {/* ログインしてなかったら */}
             {!loginName && (
               <div>
-                <Link href="/tour/login">
+                <Link href="/login">
                   <button className={styles.button_login}>ログイン</button>
                 </Link>
               </div>
@@ -67,7 +67,7 @@ export function Header() {
             {loginName.length > 0 && (
               <>
                 <div className={styles.login_user}>
-                  <Link href="/tour/booking_confirmation">
+                  <Link href="/booking_confirmation">
                     <div className={styles.cart_size}>
                       <Image src="/images/user.png" alt="ロゴ" layout="fill" />
                     </div>
@@ -75,7 +75,7 @@ export function Header() {
                   </Link>
                 </div>
                 <div className={styles.login_user}>
-                  <Link href="/tour/booking_confirmation">
+                  <Link href="/booking_confirmation">
                     <div className={styles.cart_size}>
                       <Image
                         src="/images/booking.png"
@@ -102,14 +102,14 @@ export function Header() {
             <div className={styles.res_icon}>
               <Image src="/images/user.png" alt="ロゴ" layout="fill" />
             </div>
-            <Link href="/tour/booking_confirmation">
+            <Link href="/booking_confirmation">
               <div>{loginName}さん</div>
             </Link>
 
             <div className={styles.res_icon}>
               <Image src="/images/booking.png" alt="ロゴ" layout="fill" />
             </div>
-            <Link href="/tour/booking_confirmation">
+            <Link href="/booking_confirmation">
               <div>予約の確認はこちら</div>
             </Link>
           </div>

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Head from "next/head";
-import Layout from "../../component/layout";
+import Layout from "../layout";
 import styles from "../../styles/cart.module.css";
-import { Cartlist } from "../../component/CartList/cartlist";
+import { Cartlist } from "../CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { Tour } from "../../types/types";
@@ -102,7 +102,7 @@ export function CartItems({
                     </form>
                   </div>
                   <div>
-                    <Link href="/tour">
+                    <Link href="/">
                       <button className={styles.submit} type="submit">
                         他のツアーを追加する
                       </button>
@@ -116,7 +116,7 @@ export function CartItems({
                   カートにツアーが追加されていません
                 </p>
 
-                <Link href="/tour">
+                <Link href="/">
                   <div className={styles.bookingC_btn}>
                     <button className={styles.bookingC_btn_search}>
                       ツアーを探す

@@ -1,9 +1,9 @@
-import styles from "../../styles/crete-user.module.css";
+import styles from "../styles/crete-user.module.css";
 import Head from "next/head";
 import { useState } from "react";
-import Layout from "../../component/layout";
+import Layout from "../components/layout";
 import Router from "next/router";
-import { supabase } from "../../utils/supabaseClient";
+import { supabase } from "../utils/supabaseClient";
 
 const CreateUser = () => {
   const [lastName, setLastName] = useState("");

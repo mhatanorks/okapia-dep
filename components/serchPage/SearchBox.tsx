@@ -187,7 +187,7 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
     <>
       <div className={styles.howtosearch}>
         <div className={styles.searchareaname}>地名から探す</div>
-        <Link href="/tour/map/search-map">
+        <Link href="/map/search-map">
           <div className={styles.searchmap}>地図から探す</div>
         </Link>
       </div>

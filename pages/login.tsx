@@ -1,9 +1,9 @@
-import styles from "../../styles/login.module.css";
+import styles from "../styles/login.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Layout from "../../component/layout";
-import { supabase } from "../../utils/supabaseClient";
+import Layout from "../components/layout";
+import { supabase } from "../utils/supabaseClient";
 import Head from "next/head";
 
 export default function Login() {
@@ -36,10 +36,10 @@ export default function Login() {
         } else if (response.status === 200) {
           const localTourJSON = localStorage.getItem("tours");
           if (localTourJSON === null) {
-            router.push("/tour");
+            router.push("/");
             console.log("トップページに遷移");
           } else {
-            router.push("/tour/pay");
+            router.push("/pay");
             console.log("payに遷移");
           }
 
@@ -155,7 +155,7 @@ export default function Login() {
           </div>
         </div>
         {/* container */}
-        <Link href="create-user">
+        <Link href="/create-user">
           <button type="button" className={styles.reg_button}>
             新規登録はこちら
           </button>

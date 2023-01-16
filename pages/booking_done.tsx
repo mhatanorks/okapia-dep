@@ -1,11 +1,11 @@
 import Head from "next/head";
-import styles from "../../styles/booking_done.module.css";
+import styles from "../styles/booking_done.module.css";
 import Link from "next/link";
-import useCookie from "../../hooks/useCookie";
-import Layout from "../../component/layout";
+import useCookie from "../hooks/useCookie";
+import Layout from "../components/layout";
 import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
-import { Order } from "../../types/types";
+import { supabase } from "../utils/supabaseClient";
+import { Order } from "../types/types";
 
 
 export default function BookingDone() {
@@ -67,7 +67,7 @@ export default function BookingDone() {
           </p>
 
           <div className={styles.booking_button}>
-            <Link href="/tour/booking_confirmation">
+            <Link href="/booking_confirmation">
               <button className={styles.booking_btn} type="submit">
                 予約確認へ
               </button>

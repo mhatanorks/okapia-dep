@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Layout from "../../../component/layout";
-import style from "../../../styles/search-map.module.css";
+import Layout from "../../components/layout";
+import style from "../../styles/search-map.module.css";
 
 export default function searchJPmap() {
   return (

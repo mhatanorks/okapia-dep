@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Tour } from "../../../types/types";
-import styles from "../../../styles/search-page.module.css";
-import Layout from "../../../component/layout";
+import { Tour } from "../../types/types";
+import styles from "../../styles/search-page.module.css";
+import Layout from "../../components/layout";
 import Head from "next/head";
-import { supabase } from "../../../utils/supabaseClient";
+import { supabase } from "../../utils/supabaseClient";
 
 export const getStaticPaths = async () => {
   const { data, error } = await supabase.from("tours").select("*");

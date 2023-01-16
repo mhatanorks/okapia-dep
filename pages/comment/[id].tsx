@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import { SetStateAction, useEffect, useState } from "react";
-import Layout from "../../../component/layout";
-import { Tour } from "../../../types/types";
-import { supabase } from "../../../utils/supabaseClient";
+import Layout from "../../components/layout";
+import { Tour } from "../../types/types";
+import { supabase } from "../../utils/supabaseClient";
 
 // データ取得
 // ページ読み込み時にsupabaseのデータ取得
